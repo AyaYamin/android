@@ -1,15 +1,7 @@
 <?php
 
 
-/*
-$link = mysqli_connect("localhost", "root", "", "project_new");
- 
-// Check connection
-if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-}else{
-    echo 'connected Successfully';
-}*/
+
 
 
 
@@ -26,33 +18,34 @@ if($link === false){
   
   if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
-  } else {
-      echo "Connected successfully";
-  }
+  }// else {
+   //   echo "Connected successfully";
+  //}
 
-   if($_SERVER["REQUEST_METHOD"] == "POST") {
-	   
+  // if($_SERVER["REQUEST_METHOD"] == "POST") {
 	  $id=$_GET['id'];
-	  
 	  $pass=$_GET['pass'];
-	  
-      $sql = "SELECT parn_pass FROM student WHERE part_id='$id'";
+      $sql = "SELECT parn_pass FROM student WHERE part_id='88'";
       $result = mysqli_query($conn,$sql);
-      $count = mysqli_num_rows($result);
+    $count = mysqli_num_rows($result);
       
       if ($count > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
-            echo $row['parn_pass'] . "\n";
-            if ($row['parn_pass'] == ($pass)) {
+          //  echo $row['parn_pass'] . "\n";
+          // echo  json_encode( $row['parn_pass'] );
+          echo $row['parn_pass'];
+          /*    if ($row['parn_pass'] == ($pass)) {
                   /// header("location: parent.html");
-                  return true;
+                //  echo 'true';
+                 // return $row['parn_pass'];
             } 
 			else {
-                echo 'error';
-            }
+                echo 'false';
+            }*/
         }
     }
-}
+
+//}
 mysqli_close($conn);
 ?>
 

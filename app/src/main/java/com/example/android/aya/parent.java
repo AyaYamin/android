@@ -12,6 +12,9 @@
     import android.widget.EditText;
     import android.widget.Toast;
 
+    import org.json.JSONException;
+    import org.json.JSONObject;
+
     import java.io.BufferedReader;
     import java.io.BufferedWriter;
     import java.io.IOException;
@@ -33,99 +36,109 @@
 
 
         public void onClick_Login(View view) {
-            final String id_p = Parent_id.getText().toString();
-            final String pass_p = Parent_pass.getText().toString();
-            new AsyncLogin().execute(id_p, pass_p);
-        }
-
-
-        private class AsyncLogin extends AsyncTask<String, String, String> {
-            ProgressDialog pdLoading = new ProgressDialog(parent.this);
-            HttpURLConnection conn;
-            URL url = null;
-
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-                //this method will be running on UI thread
-                pdLoading.setMessage("\tLoading...");
-                pdLoading.setCancelable(false);
-                pdLoading.show();
-
-            }
-
-            @Override
-            protected String doInBackground(String... params) {
-                     try{
-                         url = new URL("http://192.168.1.6/Parent_Student/aya/connection.php?id="+id_p+"&pass="+ pass_p);
-                         conn = (HttpURLConnection) url.openConnection();
-                         conn.setRequestMethod("POST");
-                         conn.setDoInput(true);
-                         conn.setDoOutput(true);
-                         Uri.Builder builder = new Uri.Builder().appendQueryParameter("id", params[0]).appendQueryParameter("pass", params[1]);
-                         String query = builder.build().getEncodedQuery();
-                         Log.i("msg",query);
-                         OutputStream os = conn.getOutputStream();
-                         BufferedWriter writer = new BufferedWriter( new OutputStreamWriter(os, "UTF-8"));
-                         writer.write(query);
-                         writer.flush();
-                         writer.close();
-                         os.close();
-                         conn.connect();
-                         int response_code = conn.getResponseCode();
-                         Log.i("response", String.valueOf(response_code));
-                         if (response_code == HttpURLConnection.HTTP_OK) {
-                             InputStream input = conn.getInputStream();
-                             BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-                             StringBuilder result = new StringBuilder();
-                             //String line;
-                           //  while ((line = reader.readLine()) != null) {
-                           //      result.append(line);
-                           //  }
-                           //  return(result.toString());
-                             onPostExecute(result);
-                             return String.valueOf((result));
-                         }
-                         else{
-                             Toast.makeText(getApplicationContext(),"Please,Check Your Connection",Toast.LENGTH_LONG).show();
-                         }
-
-                     } catch (MalformedURLException e) {
-                         e.printStackTrace();
-                     } catch (IOException e) {
-                         e.printStackTrace();
-                     }
-
-                return null;
-            }
-
-           //@Override
-            protected void onPostExecute(StringBuilder result) {
-                pdLoading.dismiss();
-               // Log.i("aya 22","aya");
-                Log.i("aya result", result.toString());
-              // if(result==true)
-               if(result.toString()=="true")
-              // if(result.equalsIgnoreCase("true"))
+             id_p = Parent_id.getText().toString();
+             pass_p = Parent_pass.getText().toString();
+            if(Parent_id.getText().toString().equals("")  || Parent_pass.getText().toString().equals("") )
                 {
-                   // Log.i("aya 22","ahlaaam");
-                  //  Intent intent=new Intent(getApplicationContext(), ParentBody.class);
-                  //  startActivity(intent);
-                  //  parent.this.finish();
+                    Parent_id.setError("Enter Your ID");
+                    Parent_pass.setError("Enter Your Password");
+                    Toast.makeText(parent.this,"Please,Enter Your ID & Password",Toast.LENGTH_LONG).show();
                 }
-                /*else if (result.equalsIgnoreCase("false")){
-
-                    // If username and password does not match display a error message
-                    Toast.makeText(parent.this, "Invalid ID or Password", Toast.LENGTH_LONG).show();
-
-                } else if (result.equalsIgnoreCase("exception") || result.equalsIgnoreCase("unsuccessful")) {
-
-                    Toast.makeText(parent.this, "OOPs! Something went wrong. Connection Problem.", Toast.LENGTH_LONG).show();
-
-                }*/
-            }
-
+            else
+                {
+                  //  new AsyncLogin().execute(id_p, pass_p);
+                    getJSON("http://192.168.1.6/Parent_Student/aya/connection.php?id="+id_p+"&pass="+ pass_p);
+                  //  getJSON("http://172.16.96.164/Parent_Student/aya/connection.php?id="+id_p+"&pass="+ pass_p);
+                }
         }
+
+
+
+        //this method is actually fetching the json string
+        private void getJSON(final String urlWebService) {
+            class GetJSON extends AsyncTask<Void, Void, String> {
+
+                @Override
+                protected void onPreExecute() {
+                    super.onPreExecute();
+                }
+                @Override
+                protected void onPostExecute(String s) {
+                    super.onPostExecute(s);
+                    Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+
+                      if( s.toString().trim().equalsIgnoreCase(pass_p)){
+                    // if( s.equals(pass_p)){
+                    //     Log.i("s",s);
+                    //      Log.i("pass_p",pass_p);
+
+
+                    // Log.d("mm", String.valueOf(s==pass_p));
+                   /* if(s==pass_p){*/
+                        Log.i("result","aya");
+                        Intent intent=new Intent(getApplicationContext(), ParentBody.class);
+                        startActivity(intent);
+                        parent.this.finish();
+                    }else
+                    {
+                        //Toast.makeText(parent.this.getApplicationContext(),"Please",Toast.LENGTH_SHORT).show();}
+                        Parent_pass.setError("Enter Your Password");
+                        Log.i("result","ahlamm");
+                        Toast.makeText(parent.this,"Please, Check Your ID & Password ^_^",Toast.LENGTH_SHORT).show();}
+
+                }
+
+                //in this method we are fetching the json string
+                @Override
+                protected String doInBackground(Void... voids) {
+                    try {
+                        //creating a URL
+                        URL url = new URL(urlWebService);
+
+                        //Opening the URL using HttpURLConnection
+                        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+
+                        //StringBuilder object to read the string from the service
+                        StringBuilder sb = new StringBuilder();
+
+                        //We will use a buffered reader to read the string from service
+                        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+                        //A simple string to read values from each line
+                        String json;
+
+                        //reading until we don't find null
+                        while ((json = bufferedReader.readLine()) != null) {
+
+                            //appending it to string builder
+                            sb.append(json + "\n");
+                        }
+
+                        Log.i("result", sb.toString());
+
+                        Log.i("result", pass_p);
+
+                        Log.i("result", String.valueOf(sb.toString().trim().equalsIgnoreCase(pass_p)));
+
+                        return sb.toString().trim();
+
+
+                    } catch (Exception e) {
+                        return null;
+                    }
+
+                }
+
+
+
+
+
+                }
+
+                //creating asynctask object and executing it
+                GetJSON getJSON = new GetJSON();
+                getJSON.execute();
+            }
 
 
 
