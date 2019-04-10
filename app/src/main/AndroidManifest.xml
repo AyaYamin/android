@@ -24,12 +24,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".LoginActivity_Parent"
-            android:label="@string/title_activity_login__parent" />
         <activity android:name=".parent" />
         <activity android:name=".student" />
-        <activity android:name=".ParentBody"></activity>
+        <activity android:name=".ParentBody" />
+        <activity android:name=".ParentProfile" />
+        <activity android:name=".activiries" />
+        <activity android:name=".parent_act" />
+        <activity android:name=".parent_grades" />
+        <activity android:name=".parent_att"></activity>
     </application>
 
 </manifest>

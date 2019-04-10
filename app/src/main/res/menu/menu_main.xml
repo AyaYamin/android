@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#66b8ba" >
+    <item
+        android:title="Edit Profile"
+        android:id="@+id/settings"
+        android:orderInCategory="100"
+        android:background="#66b8ba"
+        android:textSize="24sp"
+        android:textColor="#66b8ba"
+        android:textStyle="bold|italic"
+        app:showAsAction="never">
+    </item>
+    <item
+        android:title="Messages"
+        android:id="@+id/Messages"
+        android:orderInCategory="100"
+        android:background="#66b8ba"
+        android:textSize="24sp"
+        android:textColor="#66b8ba"
+        android:textStyle="bold|italic"
+        app:showAsAction="never">
+    </item>
+    <item
+        android:title="Sign Out"
+        android:id="@+id/signout"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        android:orderInCategory="100"
+        android:textColor="#66b8ba"
+        android:background="#66b8ba"
+        app:showAsAction="never"
+        >
+
+    </item>
+</menu>

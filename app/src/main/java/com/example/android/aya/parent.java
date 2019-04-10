@@ -32,7 +32,7 @@
          Button login;
          String id_p ;
          String pass_p;
-
+         String id;
 
 
         public void onClick_Login(View view) {
@@ -68,15 +68,10 @@
                     Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
 
                       if( s.toString().trim().equalsIgnoreCase(pass_p)){
-                    // if( s.equals(pass_p)){
-                    //     Log.i("s",s);
-                    //      Log.i("pass_p",pass_p);
-
-
-                    // Log.d("mm", String.valueOf(s==pass_p));
-                   /* if(s==pass_p){*/
                         Log.i("result","aya");
                         Intent intent=new Intent(getApplicationContext(), ParentBody.class);
+                         // Intent intent=new Intent(getApplicationContext(), Nav.class);
+                          intent.putExtra("id",id_p);
                         startActivity(intent);
                         parent.this.finish();
                     }else

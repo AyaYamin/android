@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">aya</string>
+    <string name="app_name"></string>
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
@@ -18,4 +18,20 @@
     <string name="Click_To_get_Your_Password">Click To Get YourPassword</string>
     <string name="t">Are You New ??</string>
     <string name="sign_in">Sign In</string>
+    <string name="title_activity_nav">Nav</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+
+    <string name="action_settings">Settings</string>
+    <string-array name="navigation_drawer_items_array">
+        <item>Connect</item>
+        <item>Fixtures</item>
+        <item>Table</item>
+    </string-array>
 </resources>
