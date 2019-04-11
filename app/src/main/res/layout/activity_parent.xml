@@ -11,22 +11,24 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="343dp"
-        android:layout_height="231dp"
-        android:layout_marginBottom="253dp"
+        android:layout_height="322dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginTop="105dp"
-        android:background="#66b8ba"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.761"
         tools:ignore="MissingConstraints">
 
         <Button
             android:id="@+id/button"
             android:layout_width="329dp"
-            android:layout_height="42dp"
+            android:layout_height="64dp"
             android:layout_marginTop="25dp"
-            android:background="#8cbaba"
+            android:background="#66b8ba"
             android:fontFamily="cursive"
             android:onClick="onClick_Login"
             android:text="SignIn"
@@ -68,6 +70,7 @@
             android:ems="10"
             android:fontFamily="cursive"
             android:hint="Your Password"
+
             android:inputType="textPassword"
             android:textAlignment="center"
             android:textColor="#fff"
@@ -80,9 +83,9 @@
             app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
 
-    <android.support.constraint.ConstraintLayout
+  <!--  <android.support.constraint.ConstraintLayout
         android:layout_width="368dp"
-        android:layout_height="173dp"
+        android:layout_height="152dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -93,7 +96,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="0.875"
+        app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints">
 
         <TextView
@@ -144,4 +147,13 @@
 
 
     </android.support.constraint.ConstraintLayout>
+-->
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="389dp"
+        android:layout_height="151dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/kl" />
 </android.support.constraint.ConstraintLayout>
