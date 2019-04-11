@@ -44,9 +44,12 @@ public class ParentBody extends AppCompatActivity {
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                Toast.makeText(ParentBody.this,
-                        "Activities is clicked!", Toast.LENGTH_SHORT).show();
-                Intent intent1=new Intent(getApplicationContext(), parent_act.class);
+                Toast.makeText(ParentBody.this, "Activities is clicked!", Toast.LENGTH_SHORT).show();
+                Intent intent = getIntent();
+                String id = intent.getStringExtra("id");
+                Log.i("id=",id);
+                Intent intent1=new Intent(getApplicationContext(),parent_act.class);
+                intent1.putExtra("id", id);
                 startActivity(intent1);
                 ParentBody.this.finish();
 
@@ -77,9 +80,12 @@ public class ParentBody extends AppCompatActivity {
         imageButton4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                Toast.makeText(ParentBody.this,
-                        "Attendance is clicked!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ParentBody.this, "Attendance is clicked!", Toast.LENGTH_SHORT).show();
+                Intent intent = getIntent();
+                String id = intent.getStringExtra("id");
+                Log.i("id=",id);
                 Intent intent1=new Intent(getApplicationContext(),   parent_att.class);
+                intent1.putExtra("id", id);
                 startActivity(intent1);
                 ParentBody.this.finish();
 
