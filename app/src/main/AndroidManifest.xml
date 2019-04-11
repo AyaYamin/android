@@ -31,11 +31,13 @@
         <activity android:name=".activiries" />
         <activity android:name=".parent_act" />
         <activity android:name=".parent_grades" />
-        <activity android:name=".parent_att"></activity>
+        <activity android:name=".parent_att" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <activity android:name=".StudentBody"></activity>
     </application>
 
 </manifest>
