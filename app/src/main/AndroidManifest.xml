@@ -37,7 +37,11 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".StudentBody"></activity>
+        <activity android:name=".StudentBody" />
+        <activity android:name=".StudentProfile" />
+        <activity android:name=".grades_s" />
+        <activity android:name=".activity_S" />
+        <activity android:name=".attendance_s"></activity>
     </application>
 
 </manifest>

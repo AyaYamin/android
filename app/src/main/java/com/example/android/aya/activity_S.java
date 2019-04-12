@@ -6,8 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -15,22 +15,36 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class student extends AppCompatActivity {
+public class activity_S extends AppCompatActivity {
+    ImageButton imageButton3;
+    TextView textView5;
 
-   EditText id_S,pass_s;
-     Button login;
-
-    String pass_st,id_st;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student);
+        setContentView(R.layout.activity__s);
 
-        id_S=(EditText)findViewById(R.id.editText10);
-        pass_s=(EditText)findViewById(R.id.editText11);
-        login=(Button)findViewById(R.id.button5);
+        textView5=(TextView)findViewById(R.id.textView5);
 
+        Intent intent = getIntent();
+        final String id = intent.getStringExtra("id");
+        Log.i("id=",id);
+
+        imageButton3=(ImageButton)findViewById(R.id.imageButton3);
+        imageButton3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                Toast.makeText(activity_S.this, "Back is clicked!", Toast.LENGTH_SHORT).show();
+                Intent intent2=new Intent(getApplicationContext(),StudentBody.class);
+                intent2.putExtra("id", id);
+                startActivity(intent2);
+                activity_S.this.finish();
+            }
+
+        });
+        getJSON("http://192.168.1.6/Parent_Student/aya/getActivityS.php?id="+id);
     }
+
 
 
 
@@ -46,20 +60,7 @@ public class student extends AppCompatActivity {
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
-
-               if( s.toString().trim().equalsIgnoreCase(pass_st)){
-                    Log.i("result","aya");
-                    Intent intent=new Intent(getApplicationContext(), StudentBody.class);
-                    // Intent intent=new Intent(getApplicationContext(), Nav.class);
-                    intent.putExtra("id",id_st);
-                    startActivity(intent);
-                    student.this.finish();
-                }else
-                {
-                    //Toast.makeText(parent.this.getApplicationContext(),"Please",Toast.LENGTH_SHORT).show();}
-                    pass_s.setError("Check Your Password");
-                    Log.i("result","ahlamm");
-                    Toast.makeText(student.this,"Please, Check Your ID & Password ^_^",Toast.LENGTH_SHORT).show();}
+                textView5.setText("\n"+s);
 
             }
 
@@ -89,11 +90,8 @@ public class student extends AppCompatActivity {
                         sb.append(json + "\n");
                     }
 
-                    Log.i("result", sb.toString());
+                    Log.i("result of activity ", sb.toString());
 
-                   Log.i("result", pass_st);
-
-                    Log.i("result", String.valueOf(sb.toString().trim().equalsIgnoreCase(pass_st)));
 
                     return sb.toString().trim();
 
@@ -101,27 +99,19 @@ public class student extends AppCompatActivity {
                 } catch (Exception e) {
                     return null;
                 }
+
             }
+
+
+
+
+
         }
+
         //creating asynctask object and executing it
         GetJSON getJSON = new GetJSON();
         getJSON.execute();
     }
 
-    public void ON_Login(View view) {
-        id_st = id_S.getText().toString();
-        pass_st = pass_s.getText().toString();
-        if(id_S.getText().toString().equals("")  || pass_s.getText().toString().equals("") )
-        {
-            id_S.setError("Enter Your ID");
-            pass_s.setError("Enter Your Password");
-            Toast.makeText(student.this,"Please,Enter Your ID & Password",Toast.LENGTH_LONG).show();
-        }
-        else
-        {
-            //  new AsyncLogin().execute(id_p, pass_p);
-           getJSON("http://192.168.1.6/Parent_Student/aya/connection1.php?id="+id_st+"&pass="+pass_st);
-            //  getJSON("http://172.16.96.164/Parent_Student/aya/connection.php?id="+id_p+"&pass="+ pass_p);
-        }
-    }
+
 }
