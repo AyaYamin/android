@@ -15,7 +15,7 @@
   }
   
 	  $id=$_GET['id'];
-      $sql = "SELECT classid FROM student WHERE  id='$id'";
+      $sql = "SELECT classid FROM student WHERE  part_id='$id'";
       $result = mysqli_query($conn,$sql);
       $count = mysqli_num_rows($result);
       

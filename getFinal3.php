@@ -14,29 +14,32 @@
       die("Connection failed: " . $conn->connect_error);
   }
   
-	  $id=$_GET['id'];
-      $sql = "SELECT classid FROM student WHERE  id='$id'";
+      $idd=$_GET['id'];
+      /*
+      $sql = "SELECT id FROM student WHERE part_id='$id'";
       $result = mysqli_query($conn,$sql);
       $count = mysqli_num_rows($result);
-      
+      $idd="";
       if ($count > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
-           $classid=$row['classid'];
-         //  echo $classid;
+          $idd=$row['id'];
+        //  echo $idd;
+
         }
     }
-
-
-    $s = "SELECT semester FROM exam WHERE  classid='$classid'";
-    $result1 = mysqli_query($conn,$s);
-    $count1 = mysqli_num_rows($result1);
-    if ($count1 > 0) {
+*/
+    
+$sub=$_GET['subject'];
+        $s="SELECT point FROM grades WHERE id='$idd' and type='final' and subject='$sub'";
+      $result1 = mysqli_query($conn,$s);
+        $count1 = mysqli_num_rows($result1);
+        if ($count1 > 0) {
         while ($row1 = mysqli_fetch_assoc($result1)) {
-          echo $row1['semester'];
-          break;
+            $idd1=$row1['point'];
+            echo $idd1;
         }
-
     }
+    
 mysqli_close($conn);
 ?>
 

@@ -14,8 +14,9 @@
       die("Connection failed: " . $conn->connect_error);
   }
   
-	  $id=$_GET['id'];
-      $sql = "SELECT classid FROM student WHERE  id='$id'";
+      $id=$_GET['id'];
+      
+      $sql = "SELECT classid FROM student WHERE  part_id='$id'";
       $result = mysqli_query($conn,$sql);
       $count = mysqli_num_rows($result);
       
@@ -27,33 +28,16 @@
     }
 
 
-    $s = "SELECT subject FROM exam WHERE  classid='$classid'";
+    $s = "SELECT semester FROM exam WHERE  classid='$classid'";
     $result1 = mysqli_query($conn,$s);
     $count1 = mysqli_num_rows($result1);
-    $myArray=array();
     if ($count1 > 0) {
         while ($row1 = mysqli_fetch_assoc($result1)) {
-        // echo $row1['subject'];
-         $myArray[]=$row1;
+          echo $row1['semester'];
+          break;
         }
-        //echo json_encode($myArray);
-        
+
     }
-
-  //  print_r($myArray); 
-  // var_dump($myArray);
-
-  $sub=array();
-  foreach ($myArray  as $key ) {
-     // echo nl2br($key['subject']);
-     $sub[]=$key['subject'];
-  }
-
-
-  for($i=0;$i<count($sub);$i++){
-      echo $sub[$i];
-      echo " ";
-  }
 mysqli_close($conn);
 ?>
 

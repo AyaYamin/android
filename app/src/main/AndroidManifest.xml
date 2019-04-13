@@ -41,7 +41,9 @@
         <activity android:name=".StudentProfile" />
         <activity android:name=".grades_s" />
         <activity android:name=".activity_S" />
-        <activity android:name=".attendance_s"></activity>
+        <activity android:name=".attendance_s" />
+        <activity android:name=".grades_1" />
+        <activity android:name=".aya_p"></activity>
     </application>
 
 </manifest>

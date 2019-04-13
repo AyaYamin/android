@@ -66,7 +66,7 @@ public class ParentBody extends AppCompatActivity {
                 Intent intent = getIntent();
                 String id = intent.getStringExtra("id");
                 Log.i("id=",id);
-                Intent intent1=new Intent(getApplicationContext(),  parent_grades.class);
+                Intent intent1=new Intent(getApplicationContext(), aya_p.class);
                 intent1.putExtra("id", id);
                 startActivity(intent1);
                 ParentBody.this.finish();
