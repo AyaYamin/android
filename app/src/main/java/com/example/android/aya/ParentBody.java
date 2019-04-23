@@ -1,8 +1,16 @@
 package com.example.android.aya;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatDelegate;
@@ -21,13 +29,19 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class ParentBody extends AppCompatActivity {
 
  Toolbar toolbar;
  TextView name,id ,activity;
  ImageButton imageButton,imageButton2,imageButton4;
+    ArrayList<String> arrayList;
+ private static final String CHANNEL_ID ="simplified_coding";
+    private static final String CHANNEL_NAME ="simplified_coding";
+    private static final String CHANNEL_DESC ="simplified_coding Notifications";
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,9 +116,114 @@ public class ParentBody extends AppCompatActivity {
 
         getJSON("http://192.168.1.6/Parent_Student/aya/getNID.php?id="+id);
         getName("http://192.168.1.6/Parent_Student/aya/getname.php?id="+id);
+
+
+
+if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+    NotificationChannel channel = new NotificationChannel(CHANNEL_ID,CHANNEL_NAME,NotificationManager.IMPORTANCE_DEFAULT);
+    channel.setDescription(CHANNEL_DESC);
+    NotificationManager manager=getSystemService(NotificationManager.class);
+    manager.createNotificationChannel(channel);
     }
 
-   @Override
+   display();
+
+    }
+
+
+    private void display(){
+        Intent intent = getIntent();
+        String id = intent.getStringExtra("id");
+        Log.i("id=",id);
+        getMSG("http://192.168.1.6/Parent_Student/aya/getMSG.php?id="+id);
+    }
+
+
+
+    private void getMSG(final String urlWebService) {
+        class GetJSON extends AsyncTask<Void, Void, ArrayList<String>> {
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+            }
+
+
+            @Override
+            public ArrayList<String> doInBackground(Void... voids) {
+                try {
+                    URL url = new URL(urlWebService);
+                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                    StringBuilder sb = new StringBuilder();
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                    String json;
+                    String[] array=new String[100];
+                     arrayList = new ArrayList<String>();
+                   // while ((json = bufferedReader.readLine()) != null) { sb.append(json + "\n"); }
+                    while ((json = bufferedReader.readLine()) != null) {
+                        Log.d("aaaaac",json+"\n");
+                        array=json.split(",");
+                        for (String ss:array) {
+                            arrayList.add(ss);
+                        }
+                         //  Log.d("963",array[0]+"\n"+array[1]);
+                    }
+                   // return sb.toString().trim();
+                    for(int i=0;i<arrayList.size();i++){
+                        Log.d("963",arrayList.get(i));
+                    }
+                    return arrayList;
+                } catch (Exception e) {
+                    Log.i("msg","null");
+                }
+                return null;
+            }
+            @Override
+            protected void onPostExecute(final ArrayList<String> s) {
+                super.onPostExecute(s);
+                int count=101;
+                int x=s.size()-4;
+                for(int i=0;i<x;i++){
+                         Log.d("Not",s.get(i));
+
+                    NotificationCompat.Builder mBuilder=new NotificationCompat.Builder(ParentBody.this,CHANNEL_ID)
+                            .setContentTitle("SBTS")
+                            .setContentText(s.get(i))
+                            .setSmallIcon(R.drawable.ic_drawer)
+                            .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+
+                    NotificationManagerCompat notificationManagerCompat=NotificationManagerCompat.from(ParentBody.this);
+                    notificationManagerCompat.notify(count,mBuilder.build());
+                    count++;
+                }
+            }
+        }
+        GetJSON getJSON = new GetJSON();
+        getJSON.execute();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @Override
    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main,menu);
         return super.onCreateOptionsMenu(menu);

@@ -120,7 +120,8 @@ public class student extends AppCompatActivity {
         else
         {
             //  new AsyncLogin().execute(id_p, pass_p);
-           getJSON("http://192.168.1.6/Parent_Student/aya/connection1.php?id="+id_st+"&pass="+pass_st);
+          getJSON("http://192.168.1.6/Parent_Student/aya/connection1.php?id="+id_st+"&pass="+pass_st);
+           // getJSON("http://localhost/Parent_Student/aya/connection1.php?id="+id_st+"&pass="+pass_st);
             //  getJSON("http://172.16.96.164/Parent_Student/aya/connection.php?id="+id_p+"&pass="+ pass_p);
         }
     }

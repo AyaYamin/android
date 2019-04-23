@@ -12,7 +12,7 @@
         android:layout_width="377dp"
         android:layout_height="92dp"
         android:fontFamily="cursive"
-        android:text="What Type Of Hero \n You Are ?????"
+        android:text="What Type Of Power \n You Are ?????"
 
         android:textAlignment="center"
         android:textAllCaps="false"
