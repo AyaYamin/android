@@ -145,5 +145,9 @@
             Parent_pass=(EditText)findViewById(R.id.editText2);
             login=(Button)findViewById(R.id.button);
 
+
+
+
+
         }
     }
