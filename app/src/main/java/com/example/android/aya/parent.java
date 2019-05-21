@@ -74,6 +74,10 @@
                           intent.putExtra("id",id_p);
                         startActivity(intent);
                         parent.this.finish();
+
+
+
+
                     }else
                     {
                         //Toast.makeText(parent.this.getApplicationContext(),"Please",Toast.LENGTH_SHORT).show();}

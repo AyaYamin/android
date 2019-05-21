@@ -18,14 +18,15 @@
       $sql = "SELECT fname,mname,lname FROM teacher WHERE subject='$subject'";
       $result = mysqli_query($conn,$sql);
     $count = mysqli_num_rows($result);
-      
-      if ($count > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-          echo $row['fname'];
+    $row = mysqli_fetch_assoc($result);
+     echo $row['fname'];
           echo $row['mname'];
           echo $row['lname'];
+      if ($count > 0) {
+        //while ($row = mysqli_fetch_assoc($result)) {
+         
         }
-    }
+   // }
 
 
 mysqli_close($conn);

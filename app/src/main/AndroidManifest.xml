@@ -44,6 +44,7 @@
         <activity android:name=".attendance_s" />
         <activity android:name=".grades_1" />
         <activity android:name=".aya_p"></activity>
-    </application>
 
+
+    </application>
 </manifest>

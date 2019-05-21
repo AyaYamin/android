@@ -31,12 +31,13 @@
         $s="SELECT point FROM grades WHERE id='$idd' and type='mid'";
       $result1 = mysqli_query($conn,$s);
         $count1 = mysqli_num_rows($result1);
-        if ($count1 > 0) {
-        while ($row1 = mysqli_fetch_assoc($result1)) {
+        $row1 = mysqli_fetch_assoc($result1);
+        //if ($count1 > 0) {
+      ///  while () {
             $idd1=$row1['point'];
             echo $idd1;
-        }
-    }
+      //  }
+    //}
     
 mysqli_close($conn);
 ?>

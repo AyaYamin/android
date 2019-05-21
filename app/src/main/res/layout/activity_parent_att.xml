@@ -35,6 +35,7 @@
         android:layout_width="161dp"
         android:layout_height="109dp"
         android:layout_marginBottom="72dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="76dp"
         android:background="#e2d5db"
         android:fontFamily="serif"
@@ -45,10 +46,10 @@
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@+id/imageButton5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.928"
+        app:layout_constraintHorizontal_bias="0.883"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.983" />
 
     <TextView
         android:id="@+id/textView20"
@@ -66,7 +67,7 @@
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@+id/textView12"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.046"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:layout_constraintVertical_bias="1.0" />

@@ -19,29 +19,29 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="157dp"
         android:layout_height="38dp"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="90dp"
+        android:layout_alignStart="@+id/textView36"
+        android:layout_marginTop="127dp"
         android:background="#dcedf4"
-        android:text="Student Name:"
+        android:text="Student : "
         android:textAlignment="center"
         android:textColor="#258ec3"
         android:textSize="24sp"
-        android:textStyle="bold|italic" />
+        android:textStyle="bold|italic"
+        app:layout_constraintHorizontal_bias="1.0" />
 
     <TextView
         android:id="@+id/name"
-        android:layout_width="137dp"
+        android:layout_width="161dp"
         android:layout_height="38dp"
-        android:layout_alignBottom="@+id/textView"
         android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/textView"
+        android:layout_marginEnd="31dp"
         android:textColor="#258ec3"
         android:textSize="24sp"
-        android:textStyle="bold|italic"
-        android:layout_marginEnd="23dp" />
+        android:textStyle="bold|italic" />
 
     <TextView
         android:id="@+id/textView4"
@@ -49,24 +49,26 @@
         android:layout_height="38dp"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/textView"
-        android:layout_marginTop="147dp"
+        android:layout_marginTop="178dp"
         android:background="#dcedf4"
         android:text="Student ID:"
         android:textAlignment="center"
-        android:textColor="#258ec3"
-        android:textSize="24sp"
-        android:textStyle="bold|italic" />
 
-    <TextView
-        android:id="@+id/id"
-        android:layout_width="137dp"
-        android:layout_height="38dp"
         android:textColor="#258ec3"
         android:textSize="24sp"
         android:textStyle="bold|italic"
+        app:layout_constraintHorizontal_bias="1.0" />
+
+    <TextView
+        android:id="@+id/id"
+        android:layout_width="162dp"
+        android:layout_height="38dp"
         android:layout_alignBottom="@+id/textView4"
         android:layout_alignStart="@+id/name"
-        android:layout_marginStart="5dp" />
+        android:layout_marginStart="2dp"
+        android:textColor="#258ec3"
+        android:textSize="24sp"
+        android:textStyle="bold|italic" />
 
 
 
@@ -118,10 +120,11 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="360dp"
-        android:layout_height="352dp"
+        android:layout_height="330dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="4dp">
+        android:layout_marginBottom="11dp"
+        android:background="#dcedf4">
 
 
         <!--   <ImageView
@@ -137,17 +140,18 @@
             app:srcCompat="@drawable/activity1" />  -->
         <ImageButton
             android:id="@+id/imageButton"
-            android:layout_width="113dp"
-            android:layout_height="143dp"
+            android:layout_width="123dp"
+            android:layout_height="124dp"
             android:layout_marginBottom="189dp"
             android:layout_marginEnd="202dp"
             android:layout_marginStart="16dp"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.41"
             app:srcCompat="@drawable/activity1"
             tools:ignore="MissingConstraints" />
 
@@ -161,13 +165,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/imageButton"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.352"
+            app:layout_constraintVertical_bias="0.202"
             app:srcCompat="@drawable/g" />
 
         <TextView
             android:id="@+id/textView8"
-            android:layout_width="185dp"
+            android:layout_width="114dp"
             android:layout_height="38dp"
             android:layout_marginEnd="16dp"
             android:text="Grades"
@@ -177,14 +182,16 @@
             android:textStyle="bold|italic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/textView9"
-            app:layout_constraintTop_toBottomOf="@+id/imageButton2"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.671" />
 
         <TextView
             android:id="@+id/textView9"
-            android:layout_width="146dp"
-            android:layout_height="33dp"
+            android:layout_width="127dp"
+            android:layout_height="37dp"
             android:layout_marginEnd="17dp"
             android:layout_marginStart="16dp"
             android:text="Activities"
@@ -194,15 +201,16 @@
             android:textStyle="bold|italic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/textView8"
+            app:layout_constraintHorizontal_bias="0.271"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.447" />
 
 
         <TextView
             android:id="@+id/textView10"
             android:layout_width="139dp"
-            android:layout_height="29dp"
-            android:layout_marginBottom="4dp"
+            android:layout_height="39dp"
             android:text="  Attendance"
             android:textAlignment="center"
             android:textColor="#66b8ba"
@@ -210,27 +218,50 @@
             android:textStyle="bold|italic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintHorizontal_bias="0.158"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
         <ImageButton
             android:id="@+id/imageButton4"
             android:layout_width="103dp"
             android:layout_height="110dp"
             android:layout_marginTop="11dp"
-            app:layout_constraintBottom_toTopOf="@+id/textView10"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.062"
+            app:layout_constraintHorizontal_bias="0.167"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView9"
-            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.789"
             app:srcCompat="@drawable/att1" />
     </android.support.constraint.ConstraintLayout>
 
+    <TextView
+        android:id="@+id/textView36"
+        android:layout_width="157dp"
+        android:layout_height="38dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="72dp"
+        android:background="#dcedf4"
+        android:text="Parent :"
+        android:textAlignment="center"
+        android:textColor="#258ec3"
+        android:textSize="24sp"
+        android:textStyle="bold|italic" />
 
-
-
-
+    <TextView
+        android:id="@+id/parent"
+        android:layout_width="169dp"
+        android:layout_height="36dp"
+        android:layout_alignTop="@+id/textView36"
+        android:layout_toEndOf="@+id/textView"
+        android:text=" "
+        android:textColor="#258ec3"
+        android:textSize="24sp"
+        android:textStyle="bold|italic" />
 
 
 </RelativeLayout>

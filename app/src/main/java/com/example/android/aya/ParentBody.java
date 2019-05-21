@@ -36,7 +36,7 @@
 
         private boolean firstTime = true;
         Toolbar toolbar;
-        TextView name,id ,activity;
+        TextView name,id ,activity,parent;
         ImageButton imageButton,imageButton2,imageButton4;
         ArrayList<String> arrayList;
         private static final String CHANNEL_ID ="simplified_coding";
@@ -53,6 +53,7 @@
              setSupportActionBar(toolbar);
              name=(TextView)findViewById(R.id.name);
              id=(TextView)findViewById(R.id.id);
+             parent=(TextView)findViewById(R.id.parent);
              AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
             imageButton=(ImageButton)findViewById(R.id.imageButton);
@@ -115,18 +116,18 @@
             Log.i("id=",id);
             getJSON("http://192.168.1.6/Parent_Student/aya/getNID.php?id="+id);
             getName("http://192.168.1.6/Parent_Student/aya/getname.php?id="+id);
+            getParentt("http://192.168.1.6/Parent_Student/aya/getParentt.php?id="+id);
 
 
-
-    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+  /*  if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
         NotificationChannel channel = new NotificationChannel(CHANNEL_ID,CHANNEL_NAME,NotificationManager.IMPORTANCE_DEFAULT);
         channel.setDescription(CHANNEL_DESC);
         NotificationManager manager=getSystemService(NotificationManager.class);
         manager.createNotificationChannel(channel);
 
-        }
+        }*/
 
-      display();
+    //  display();
 
 
           //  SharedPreferences sharedpreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
@@ -270,8 +271,9 @@
                 protected void onPostExecute(final ArrayList<String> s) {
                     super.onPostExecute(s);
                     int count=101;
-                    NotificationCompat.Builder mBuilder=new NotificationCompat.Builder(ParentBody.this, CHANNEL_ID);
-                    int x=s.size()-4;
+//                   Log.i("size", String.valueOf(s.size()));
+                  NotificationCompat.Builder mBuilder=new NotificationCompat.Builder(ParentBody.this, CHANNEL_ID);
+                   int x=s.size()-4;
                     for(int i=0;i<x;i++){
                         Log.d("Not",s.get(i));
                         Intent i1=new Intent(ParentBody.this,ParentBody.class);
@@ -288,6 +290,8 @@
                         mBuilder.setSound(alarmSound);
                         NotificationManagerCompat notificationManagerCompat=NotificationManagerCompat.from(ParentBody.this);
                        // notificationManagerCompat.setLatestEventInfo(getApplicationContext(), subject, body,pending);
+
+                      //  notificationManagerCompat.getEventType();
                         notificationManagerCompat.notify(count,mBuilder.build());
                         count++;
                     }
@@ -412,6 +416,68 @@
                     super.onPostExecute(s);
                     // Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
                     name.setText(s);
+
+                }
+
+                //in this method we are fetching the json string
+                @Override
+                protected String doInBackground(Void... voids) {
+                    try {
+                        //creating a URL
+                        URL url = new URL(urlWebService);
+
+                        //Opening the URL using HttpURLConnection
+                        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+
+                        //StringBuilder object to read the string from the service
+                        StringBuilder sb = new StringBuilder();
+
+                        //We will use a buffered reader to read the string from service
+                        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+                        //A simple string to read values from each line
+                        String json;
+
+                        //reading until we don't find null
+                        while ((json = bufferedReader.readLine()) != null) {
+
+                            //appending it to string builder
+                            sb.append(json + "\n");
+                        }
+
+
+                        Log.i("result is :",sb.toString().trim());
+                        return sb.toString().trim();
+
+
+                    } catch (Exception e) {
+                        return null;
+                    }
+
+                }
+
+            }
+
+            //creating asynctask object and executing it
+            GetJSON getJSON = new GetJSON();
+            getJSON.execute();
+        }
+
+
+
+        //this method is actually fetching the json string
+        private void getParentt(final String urlWebService) {
+            class GetJSON extends AsyncTask<Void, Void, String> {
+
+                @Override
+                protected void onPreExecute() {
+                    super.onPreExecute();
+                }
+                @Override
+                protected void onPostExecute(String s) {
+                    super.onPostExecute(s);
+                    // Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+                   parent.setText(s);
 
                 }
 

@@ -29,7 +29,7 @@
     }
 */
 $sub=$_GET['subject'];
-        $s="SELECT point FROM grades WHERE id='$idd' and type='quiz' and subject='$sub'";
+        $s="SELECT point FROM grades WHERE id='$idd' and type='Daily' and subject='$sub'";
       $result1 = mysqli_query($conn,$s);
         $count1 = mysqli_num_rows($result1);
         if ($count1 > 0) {

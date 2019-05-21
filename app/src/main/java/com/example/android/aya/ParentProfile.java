@@ -94,7 +94,7 @@ String ID,pass,New,REnew;
                         Intent intent = getIntent();
                         final String id = intent.getStringExtra("id");
                         Log.i("id",id);
-                        UPDATE("http://172.19.31.75/Parent_Student/aya/update1.php?id="+id+"&new="+New);
+                        UPDATE("http://192.168.1.6/Parent_Student/aya/update1.php?id="+id+"&new="+New);
                     }else{
                         editText7.setError("Incompatible Password");
                         editText8.setError("Incompatible Password");

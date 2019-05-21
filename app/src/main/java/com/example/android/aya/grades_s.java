@@ -61,7 +61,7 @@
                 @Override
                 protected void onPostExecute(String s) {
                     super.onPostExecute(s);
-                    Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+                  //  Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
                     textView42.setText("\n"+s+"Semester"); }
                 @Override
                 protected String doInBackground(Void... voids) {

@@ -137,8 +137,8 @@ TextView textView7,textView11,textView19,textView23,textView25,textView33;
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
-                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
-                textView19.setText(s);
+              //  Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+                textView19.setText(s+"points"+"     "+"10%");
             }
             @Override
             protected String doInBackground(Void... voids) {
@@ -169,7 +169,7 @@ TextView textView7,textView11,textView19,textView23,textView25,textView33;
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
-                textView23.setText(s);
+                textView23.setText(s+"points"+"     "+"30%");
             }
             @Override
             protected String doInBackground(Void... voids) {
@@ -204,7 +204,7 @@ TextView textView7,textView11,textView19,textView23,textView25,textView33;
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
-                textView25.setText(s);
+                textView25.setText(s+"points"+"     "+"50%");
             }
             @Override
             protected String doInBackground(Void... voids) {

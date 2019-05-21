@@ -3,7 +3,7 @@
 
 
 
-
+session_start();
 
 
   $db = new mysqli("localhost", "root", "", "project_new");

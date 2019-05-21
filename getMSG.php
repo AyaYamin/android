@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+//session_start();
   $db = new mysqli("localhost", "root", "", "project_new");
   if (!$db) die("database connection error");
   

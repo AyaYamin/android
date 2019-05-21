@@ -66,7 +66,7 @@ ImageButton imageButton6;
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
-                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
                 textView11.setText(s); }
             @Override
             protected String doInBackground(Void... voids) {
@@ -100,7 +100,7 @@ ImageButton imageButton6;
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
-                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
                 textView19.setText(s+"points"+"    "+"10%");
             }
             @Override
@@ -131,7 +131,7 @@ ImageButton imageButton6;
             @Override
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
-                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
                 textView23.setText(s+"points"+"    "+"30%");
             }
             @Override
